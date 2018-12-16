@@ -1,0 +1,16 @@
+{
+  "name": "graphql-client",
+  "version": "1.0.0",
+  "description": "A React and GraphQL client for NFLEvate",
+  "main": "index.js",
+  "author": "Nigel Reoch",
+  "license": "MIT",
+  "scripts": {
+    "start": "next"
+  },
+  "dependencies": {
+    "next": "^7.0.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  }
+}
