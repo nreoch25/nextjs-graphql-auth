@@ -1,14 +1,10 @@
-import { Component } from "react";
-import Layout from "../components/Layout";
+import Layout from "../components/Layout/Layout";
+import Signup from "../components/Auth/Signup";
 
-class Signup extends Component {
-  render() {
-    return (
-      <Layout>
-        <p>Signup</p>
-      </Layout>
-    );
-  }
-}
+const SignupPage = props => (
+  <Layout>
+    <Signup />
+  </Layout>
+);
 
-export default Signup;
+export default SignupPage;

@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const { ApolloServer, gql } = require("apollo-server-express");
 const fs = require("fs");
 const User = require("./models/User");
@@ -20,7 +21,11 @@ const graphqlServer = new ApolloServer({
   context: { User }
 });
 
-graphqlServer.applyMiddleware({ app });
+graphqlServer.applyMiddleware({
+  app,
+  path: "/graphql",
+  cors: { origin: "http://localhost:3000", credentials: true }
+});
 
 mongoose.Promise = global.Promise;
 mongoose

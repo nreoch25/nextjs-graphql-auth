@@ -12,6 +12,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+import Link from "next/link";
 
 class Header extends Component {
   constructor(props) {
@@ -31,15 +32,21 @@ class Header extends Component {
     return (
       <div>
         <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">NextJS GraphQL Auth</NavbarBrand>
+          <Link href="/">
+            <NavbarBrand href="#">NextJS GraphQL Auth</NavbarBrand>
+          </Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="#">Test</NavLink>
+                <Link href="/signup">
+                  <NavLink style={{ cursor: "pointer" }}>Signup</NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Test</NavLink>
+                <Link href="/signin">
+                  <NavLink style={{ cursor: "pointer" }}>Signin</NavLink>
+                </Link>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
