@@ -1,14 +1,14 @@
 import { Component } from "react";
 import Layout from "../components/Layout";
 
-class Index extends Component {
+class Signup extends Component {
   render() {
     return (
       <Layout>
-        <h1>Index Page</h1>
+        <p>Signup</p>
       </Layout>
     );
   }
 }
 
-export default Index;
+export default Signup;
