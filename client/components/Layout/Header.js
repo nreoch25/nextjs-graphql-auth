@@ -14,6 +14,7 @@ import {
 } from "reactstrap";
 import Link from "next/link";
 import User from "../Auth/User";
+import Signout from "../Auth/Signout";
 
 class Header extends Component {
   constructor(props) {
@@ -60,7 +61,7 @@ class Header extends Component {
                       {me.username}
                     </DropdownToggle>
                     <DropdownMenu right>
-                      <DropdownItem>Sign out</DropdownItem>
+                      <Signout />
                       <DropdownItem divider />
                       <DropdownItem>Account</DropdownItem>
                     </DropdownMenu>

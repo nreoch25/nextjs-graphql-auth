@@ -3,9 +3,14 @@ type Query {
   me: User
 }
 
+type SuccessMessage {
+  message: String
+}
+
 type Mutation {
   signupUser(username: String!, email: String!, password: String!): User!
   signinUser(email: String!, password: String!): User!
+  signoutUser: SuccessMessage!
 }
 
 type User {
