@@ -18,7 +18,10 @@ const resolvers = require("./graphql/resolvers");
 const graphqlServer = new ApolloServer({
   typeDefs,
   resolvers,
-  context: { User }
+  context: ({ _, res }) => ({
+    User,
+    res
+  })
 });
 
 graphqlServer.applyMiddleware({
