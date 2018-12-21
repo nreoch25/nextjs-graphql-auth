@@ -12,6 +12,7 @@ import {
   CardBody,
   CardHeader
 } from "reactstrap";
+import { CURRENT_USER_QUERY } from "../Auth/User";
 
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION(
@@ -37,7 +38,11 @@ class Signup extends Component {
   };
   render() {
     return (
-      <Mutation mutation={SIGNUP_MUTATION} variables={this.state}>
+      <Mutation
+        mutation={SIGNUP_MUTATION}
+        variables={this.state}
+        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+      >
         {(signupUser, { error, loading }) => (
           <Row style={{ paddingTop: "100px" }}>
             <Col
