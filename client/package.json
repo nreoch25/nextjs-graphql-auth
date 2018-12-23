@@ -6,7 +6,7 @@
   "author": "Nigel Reoch",
   "license": "MIT",
   "scripts": {
-    "start": "next"
+    "dev": "next"
   },
   "dependencies": {
     "apollo-boost": "^0.1.23",

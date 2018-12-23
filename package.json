@@ -6,8 +6,8 @@
   "author": "Nigel Reoch",
   "license": "MIT",
   "scripts": {
-    "server": "cd server && yarn start",
-    "client": "cd client && yarn start",
+    "server": "cd server && yarn dev",
+    "client": "cd client && yarn dev",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "devDependencies": {
