@@ -27,6 +27,6 @@ services:
       context: ./client
     volumes:
       - /app/node_modules
-      - ./client/app
+      - ./client:/app
     depends_on:
       - graphql
