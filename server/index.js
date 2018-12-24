@@ -41,7 +41,7 @@ const graphqlServer = new ApolloServer({
 graphqlServer.applyMiddleware({
   app,
   path: "/graphql",
-  cors: { origin: "http://localhost:3000", credentials: true }
+  cors: { origin: "http://localhost", credentials: true }
 });
 
 mongoose.Promise = global.Promise;
