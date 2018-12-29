@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const { randomBytes } = require("crypto");
+const { promisify } = require("util");
 
 const createToken = (user, secret) => {
   const { _id, username, email } = user;
@@ -63,6 +65,31 @@ const Mutation = {
   signoutUser: async (root, args, { res }) => {
     res.clearCookie("token");
     return { message: "Come back soon" };
+  },
+  requestReset: async (root, { email }, { User, res }) => {
+    // check if there is a user with that email
+    email = email.toLowerCase();
+    console.log(email);
+    const user = await User.findOne({ email });
+    if (!user) {
+      throw new Error(`No such user found for email ${email}`);
+    }
+    console.log("USER", user);
+    // set a reset token and expiry on that user
+    const randomBytesPromise = promisify(randomBytes);
+    const resetToken = (await randomBytesPromise(20)).toString("hex");
+    const resetTokenExpiry = Date.now() + 36000000; // 1 hour from now
+    // update user with resetToken and resetTokenExpiry
+    const updatedUser = await User.updateOne(
+      { email },
+      {
+        resetToken,
+        resetTokenExpiry
+      }
+    );
+    console.log("user updated", updatedUser);
+    // TODO send an email with the reset token
+    return { message: "Thanks" };
   }
 };
 
