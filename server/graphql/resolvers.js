@@ -74,7 +74,6 @@ const Mutation = {
     if (!user) {
       throw new Error(`No such user found for email ${email}`);
     }
-    console.log("USER", user);
     // set a reset token and expiry on that user
     const randomBytesPromise = promisify(randomBytes);
     const resetToken = (await randomBytesPromise(20)).toString("hex");
@@ -90,6 +89,45 @@ const Mutation = {
     console.log("user updated", updatedUser);
     // TODO send an email with the reset token
     return { message: "Thanks" };
+  },
+  resetPassword: async (
+    root,
+    { password, passwordConfirm, resetToken },
+    { User, res }
+  ) => {
+    // check if passwords match
+    if (password !== passwordConfirm) {
+      throw new Error("Your passwords don't match");
+    }
+    // check if the reset token is legit
+    // check if it is expired
+    const expiryCheck = Date.now() - 3600000;
+    const user = await User.findOne({
+      resetToken,
+      resetTokenExpiry: { $gt: expiryCheck }
+    });
+    if (!user) {
+      throw new Error("This token is either invalid or expired");
+    }
+    // hash the new password
+    const hashedPassword = await bcrypt.hash(password, 10);
+    // save the new password to the user and remove old reset token
+    const updatedUser = await User.findOneAndUpdate(
+      { email: user.email },
+      {
+        password: hashedPassword,
+        resetToken: null,
+        resetTokenExpiry: null
+      }
+    );
+    // generate a JWT
+    const token = createToken(updatedUser, process.env.JWT_SECRET);
+    // set the JWT cookie
+    res.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 // 1 day cookie
+    });
+    return updatedUser;
   }
 };
 

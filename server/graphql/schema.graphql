@@ -12,6 +12,11 @@ type Mutation {
   signinUser(email: String!, password: String!): User!
   signoutUser: SuccessMessage!
   requestReset(email: String!): SuccessMessage!
+  resetPassword(
+    password: String!
+    passwordConfirm: String!
+    resetToken: String!
+  ): User!
 }
 
 type User {
