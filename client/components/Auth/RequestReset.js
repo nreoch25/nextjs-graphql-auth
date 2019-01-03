@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Mutation } from "react-apollo";
 import { gql } from "apollo-boost";
 import {
+  Alert,
   Button,
   Form,
   FormGroup,
@@ -10,6 +11,7 @@ import {
   Col,
   Card,
   CardBody,
+  CardFooter,
   CardHeader
 } from "reactstrap";
 
@@ -23,14 +25,19 @@ const REQUEST_RESET_MUTATION = gql`
 
 class RequestReset extends Component {
   state = {
-    email: ""
+    email: "",
+    mutationCompleted: false
   };
   saveToState = evt => {
     this.setState({ [evt.target.name]: evt.target.value });
   };
   render() {
     return (
-      <Mutation mutation={REQUEST_RESET_MUTATION} variables={this.state}>
+      <Mutation
+        mutation={REQUEST_RESET_MUTATION}
+        variables={this.state}
+        onCompleted={() => this.setState({ mutationComplete: true })}
+      >
         {(requestReset, { error, loading }) => (
           <Row style={{ paddingTop: "100px" }}>
             <Col
@@ -65,6 +72,20 @@ class RequestReset extends Component {
                     </Button>
                   </Form>
                 </CardBody>
+                {error && (
+                  <CardFooter>
+                    <Alert style={{ marginBottom: "0" }} color="danger">
+                      {error.message}
+                    </Alert>
+                  </CardFooter>
+                )}
+                {this.state.mutationComplete && !error && (
+                  <CardFooter>
+                    <Alert style={{ marginBottom: "0" }} color="success">
+                      Please check your email for a reset link
+                    </Alert>
+                  </CardFooter>
+                )}
               </Card>
             </Col>
           </Row>

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Mutation } from "react-apollo";
 import { gql } from "apollo-boost";
 import {
+  Alert,
   Button,
   Form,
   FormGroup,
@@ -11,6 +12,7 @@ import {
   Col,
   Card,
   CardBody,
+  CardFooter,
   CardHeader
 } from "reactstrap";
 import { CURRENT_USER_QUERY } from "../Auth/User";
@@ -38,7 +40,8 @@ class Reset extends Component {
   };
   state = {
     password: "",
-    passwordConfirm: ""
+    passwordConfirm: "",
+    mutationCompleted: false
   };
   saveToState = evt => {
     this.setState({ [evt.target.name]: evt.target.value });
@@ -53,6 +56,7 @@ class Reset extends Component {
           passwordConfirm: this.state.passwordConfirm
         }}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+        onCompleted={() => this.setState({ mutationComplete: true })}
       >
         {(resetPassword, { error, loading }) => (
           <Row style={{ paddingTop: "100px" }}>
@@ -97,6 +101,20 @@ class Reset extends Component {
                     </Button>
                   </Form>
                 </CardBody>
+                {error && (
+                  <CardFooter>
+                    <Alert style={{ marginBottom: "0" }} color="danger">
+                      {error.message}
+                    </Alert>
+                  </CardFooter>
+                )}
+                {this.state.mutationComplete && !error && (
+                  <CardFooter>
+                    <Alert style={{ marginBottom: "0" }} color="success">
+                      You have successfully reset your password
+                    </Alert>
+                  </CardFooter>
+                )}
               </Card>
             </Col>
           </Row>

@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Mutation } from "react-apollo";
 import { gql } from "apollo-boost";
 import {
+  Alert,
   Button,
   Form,
   FormGroup,
@@ -10,6 +11,7 @@ import {
   Col,
   Card,
   CardBody,
+  CardFooter,
   CardHeader
 } from "reactstrap";
 import { CURRENT_USER_QUERY } from "../Auth/User";
@@ -26,7 +28,8 @@ const SIGNIN_MUTATION = gql`
 class Signin extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    mutationComplete: false
   };
   saveToState = evt => {
     this.setState({ [evt.target.name]: evt.target.value });
@@ -37,6 +40,7 @@ class Signin extends Component {
         mutation={SIGNIN_MUTATION}
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+        onCompleted={() => this.setState({ mutationComplete: true })}
       >
         {(signinUser, { error, loading }) => (
           <Row style={{ paddingTop: "100px" }}>
@@ -79,6 +83,20 @@ class Signin extends Component {
                     </Button>
                   </Form>
                 </CardBody>
+                {error && (
+                  <CardFooter>
+                    <Alert style={{ marginBottom: "0" }} color="danger">
+                      {error.message}
+                    </Alert>
+                  </CardFooter>
+                )}
+                {this.state.mutationComplete && !error && (
+                  <CardFooter>
+                    <Alert style={{ marginBottom: "0" }} color="success">
+                      User successfully signed in
+                    </Alert>
+                  </CardFooter>
+                )}
               </Card>
             </Col>
           </Row>
