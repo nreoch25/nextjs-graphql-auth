@@ -63,7 +63,19 @@ class Header extends Component {
                     <DropdownMenu right>
                       <Signout />
                       <DropdownItem divider />
-                      <DropdownItem>Account</DropdownItem>
+                      <DropdownItem>
+                        <Link href="/reset">
+                          <a
+                            style={{
+                              cursor: "pointer",
+                              textDecoration: "none",
+                              color: "#212529"
+                            }}
+                          >
+                            Reset password
+                          </a>
+                        </Link>
+                      </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 )}

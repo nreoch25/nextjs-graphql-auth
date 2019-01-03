@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { randomBytes } = require("crypto");
 const { promisify } = require("util");
+const { transport, passwordResetEmail } = require("../utils/mail");
 
 const createToken = (user, secret) => {
   const { _id, username, email } = user;
@@ -87,7 +88,18 @@ const Mutation = {
       }
     );
     console.log("user updated", updatedUser);
-    // TODO send an email with the reset token
+    // send an email with the reset token
+    const mailRes = await transport.sendMail({
+      from: "nreoch15@icloud.com",
+      to: user.email,
+      subject: "Your Password Reset Token",
+      html: passwordResetEmail(`Your Password Reset Token is here!
+      \n\n
+      <a href="${
+        process.env.CLIENT_URI
+      }/reset?resetToken=${resetToken}">Click Here to Reset</a>`)
+    });
+    console.log("EMAIL", mailRes);
     return { message: "Thanks" };
   },
   resetPassword: async (
