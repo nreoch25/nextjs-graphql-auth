@@ -53,6 +53,26 @@ class Header extends Component {
                         <NavLink style={{ cursor: "pointer" }}>Signin</NavLink>
                       </Link>
                     </NavItem>
+                    <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle nav caret>
+                        Options
+                      </DropdownToggle>
+                      <DropdownMenu right>
+                        <DropdownItem>
+                          <Link href="/password">
+                            <a
+                              style={{
+                                cursor: "pointer",
+                                textDecoration: "none",
+                                color: "#212529"
+                              }}
+                            >
+                              Reset password
+                            </a>
+                          </Link>
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
                   </Fragment>
                 )}
                 {me && (
@@ -64,7 +84,7 @@ class Header extends Component {
                       <Signout />
                       <DropdownItem divider />
                       <DropdownItem>
-                        <Link href="/reset">
+                        <Link href="/password">
                           <a
                             style={{
                               cursor: "pointer",
