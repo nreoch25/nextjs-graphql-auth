@@ -8,7 +8,12 @@ type SuccessMessage {
 }
 
 type Mutation {
-  signupUser(username: String!, email: String!, password: String!): User!
+  signupUser(
+    username: String!
+    email: String!
+    password: String!
+    passwordConfirm: String!
+  ): User!
   signinUser(email: String!, password: String!): User!
   signoutUser: SuccessMessage!
   requestReset(email: String!): SuccessMessage!

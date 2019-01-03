@@ -23,11 +23,19 @@ const Query = {
 };
 
 const Mutation = {
-  signupUser: async (root, { username, email, password }, { User, res }) => {
+  signupUser: async (
+    root,
+    { username, email, password, passwordConfirm },
+    { User, res }
+  ) => {
     const user = await User.findOne({ username });
     email = email.toLowerCase();
     if (user) {
       throw new Error("User already exists");
+    }
+    // check if passwords match
+    if (password !== passwordConfirm) {
+      throw new Error("Your passwords don't match");
     }
     const newUser = await new User({
       username,
@@ -124,6 +132,7 @@ const Mutation = {
     // hash the new password
     const hashedPassword = await bcrypt.hash(password, 10);
     // save the new password to the user and remove old reset token
+    // findOneAndUpdate will return the user to be returned
     const updatedUser = await User.findOneAndUpdate(
       { email: user.email },
       {
