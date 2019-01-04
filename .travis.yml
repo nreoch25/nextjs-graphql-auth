@@ -1,0 +1,21 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t nreoch9/nextjs-graphql-auth-client-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run nreoch9/nextjs-graphql-auth-client-test yarn test -- --coverage
+
+after_success:
+  # Build images
+  - docker build -t nreoch9/nextjs-graphql-auth-client ./client
+  - docker build -t nreoch9/nextjs-graphql-auth-nginx ./nginx
+  - docker build -t nreoch9/nextjs-graphql-auth-server ./server
+  # Login to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Push images to docker hub
+  - docker push nreoch9/nextjs-graphql-auth-client
+  - docker push nreoch9/nextjs-graphql-auth-nginx
+  - docker push nreoch9/nextjs-graphql-auth-server

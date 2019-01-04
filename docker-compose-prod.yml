@@ -5,7 +5,7 @@ services:
   nginx:
     restart: always
     build: ./nginx
-    image: nreoch9/next-graphql-nginx:latest
+    image: nreoch9/nextjs-graphql-auth-nginx:latest
     ports:
       - "80:80"
     depends_on:
@@ -13,9 +13,9 @@ services:
       - client
   graphql:
     build: ./server
-    image: nreoch9/next-graphql-server:latest
+    image: nreoch9/nextjs-graphql-auth-server:latest
     depends_on:
       - db
   client:
     build: ./client
-    image: nreoch9/next-graphql-auth:latest
+    image: nreoch9/nextjs-graphql-auth-client:latest

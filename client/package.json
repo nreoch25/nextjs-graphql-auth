@@ -1,8 +1,7 @@
 {
-  "name": "graphql-client",
+  "name": "nextjs-graphql-auth-client",
   "version": "1.0.0",
-  "description": "A React and GraphQL client for NFLEvate",
-  "main": "index.js",
+  "description": "A GraphQL client for NextJs GraphQL Auth",
   "author": "Nigel Reoch",
   "license": "MIT",
   "scripts": {

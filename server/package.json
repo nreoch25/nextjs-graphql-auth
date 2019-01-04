@@ -1,8 +1,7 @@
 {
-  "name": "graphql-server",
+  "name": "nextjs-graphql-auth-server",
   "version": "1.0.0",
-  "description": "A GraphQL server for NFLEvate",
-  "main": "index.js",
+  "description": "A GraphQL server for NextJs GraphQL Auth",
   "author": "Nigel Reoch",
   "license": "MIT",
   "scripts": {
