@@ -1,4 +1,4 @@
-const env = process.env.NODE_ENV || "local";
+const env = process.env.NODE_ENV || "development";
 const config = {
   development: {
     origin: "http://localhost",

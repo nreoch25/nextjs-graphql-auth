@@ -6,7 +6,13 @@
       "image": "mongo:latest",
       "hostname": "db",
       "essential": false,
-      "memory": 128
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 27017,
+          "containerPort": 27017
+        }
+      ]
     },
     {
       "name": "client",
