@@ -20,7 +20,7 @@ after_success:
   - docker push nreoch9/nextjs-graphql-auth-nginx
   - docker push nreoch9/nextjs-graphql-auth-server
 
-  deploy:
+deploy:
   provider: elasticbeanstalk
   region: us-east-2
   app: nextjs-graphql-auth
