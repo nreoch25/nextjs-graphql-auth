@@ -3,7 +3,10 @@ import ApolloClient from "apollo-boost";
 import { endpoint, config } from "../config";
 
 function createClient({ headers }) {
-  console.log("test env", config.test);
+  const endpoint = process.browser
+    ? config.clientEndpoint
+    : config.serverEndpoint;
+  console.log("ENDPOINT", endpoint);
   return new ApolloClient({
     uri: endpoint,
     request: operation => {
