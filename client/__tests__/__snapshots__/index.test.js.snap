@@ -2,8 +2,6 @@
 
 exports[`Index Page matches the snapshot 1`] = `
 <Layout>
-  <h1>
-    Index Page
-  </h1>
+  <Index />
 </Layout>
 `;
