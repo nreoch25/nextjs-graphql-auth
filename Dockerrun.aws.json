@@ -26,7 +26,8 @@
       "image": "nreoch9/nextjs-graphql-auth-server:latest",
       "hostname": "graphql",
       "essential": false,
-      "memory": 128
+      "memory": 128,
+      "links": ["db"]
     },
     {
       "name": "nginx",
