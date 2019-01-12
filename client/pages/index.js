@@ -1,14 +1,15 @@
 import { Component } from "react";
 import Layout from "../components/Layout/Layout";
+import Index from "../components/Index";
 
-class Index extends Component {
+class IndexPage extends Component {
   render() {
     return (
       <Layout>
-        <h1>Index Page</h1>
+        <Index />
       </Layout>
     );
   }
 }
 
-export default Index;
+export default IndexPage;

@@ -41,6 +41,11 @@ class Header extends Component {
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <Link href="/protected">
+                    <NavLink style={{ cursor: "pointer" }}>Protected</NavLink>
+                  </Link>
+                </NavItem>
                 {!me && (
                   <Fragment>
                     <NavItem>

@@ -6,7 +6,6 @@ function createClient({ headers }) {
   const endpoint = process.browser
     ? config.clientEndpoint
     : config.serverEndpoint;
-  console.log("ENDPOINT", endpoint);
   return new ApolloClient({
     uri: endpoint,
     request: operation => {

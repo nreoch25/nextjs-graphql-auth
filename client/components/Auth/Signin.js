@@ -50,7 +50,9 @@ class Signin extends Component {
               lg={{ size: 6, offset: 3 }}
             >
               <Card>
-                <CardHeader className="text-center">Sign in</CardHeader>
+                <CardHeader className="text-center">
+                  {this.props.text}
+                </CardHeader>
                 <CardBody>
                   <Form
                     method="post"

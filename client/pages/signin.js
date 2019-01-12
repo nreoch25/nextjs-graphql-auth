@@ -3,7 +3,7 @@ import Signin from "../components/Auth/Signin";
 
 const SigninPage = props => (
   <Layout>
-    <Signin />
+    <Signin text="Sign in" />
   </Layout>
 );
 
