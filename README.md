@@ -5,14 +5,14 @@
 _You will need a .env file in the server directory with the following environment variables_
 
 ```
-MONGO_URI - URI pointing to your mongodb instance
+MONGO_URI  - URI pointing to your mongodb instance
 CLIENT_URI - Client side URI
 JWT_SECRET - Secret for jsonwebtoken
-PORT - GraphQL server port
-MAIL_HOST - Mail trap host
-MAIL_PORT - Mail trap port
-MAIL_USER - Mail trap user
-MAIL_PASS - Mail trap password
+PORT       - GraphQL server port
+MAIL_HOST  - Mailtrap host
+MAIL_PORT  - Mailtrap port
+MAIL_USER  - Mailtrap user
+MAIL_PASS  - Mailtrap password
 ```
 
 To run in development mode
