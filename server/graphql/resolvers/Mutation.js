@@ -1,26 +1,8 @@
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { randomBytes } = require("crypto");
 const { promisify } = require("util");
-const { transport, passwordResetEmail } = require("../utils/mail");
-
-const createToken = (user, secret) => {
-  const { _id, username, email } = user;
-  return jwt.sign({ _id, username, email }, secret);
-};
-
-const Query = {
-  users: async (root, args, { User }) => {
-    return await User.find();
-  },
-  me: async (root, args, { User, req }) => {
-    if (!req.userId) {
-      return null;
-    }
-    const user = User.findById(req.userId);
-    return user;
-  }
-};
+const { transport, passwordResetEmail } = require("../../utils/mail");
+const createToken = require("../../utils/createToken");
 
 const Mutation = {
   signupUser: async (
@@ -152,7 +134,4 @@ const Mutation = {
   }
 };
 
-module.exports = {
-  Query,
-  Mutation
-};
+module.exports = Mutation;
