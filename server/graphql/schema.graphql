@@ -1,10 +1,24 @@
-type Query {
-  users: [User!]!
-  me: User
+type User {
+  _id: ID!
+  username: String!
+  email: String!
+  password: String!
+}
+
+type Message {
+  _id: ID!
+  text: String!
+  sender: User!
 }
 
 type SuccessMessage {
   message: String
+}
+
+type Query {
+  users: [User!]!
+  me: User
+  messages: [Message!]!
 }
 
 type Mutation {
@@ -22,11 +36,9 @@ type Mutation {
     passwordConfirm: String!
     resetToken: String!
   ): User!
+  postMessage(text: String!): Message!
 }
 
-type User {
-  _id: ID!
-  username: String!
-  email: String!
-  password: String!
+type Subscription {
+  newMessage: Message!
 }
