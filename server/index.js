@@ -8,6 +8,7 @@ const { readFileSync } = require("fs");
 const { createServer } = require("http");
 const cookieParser = require("cookie-parser");
 const User = require("./models/User");
+const Message = require("./models/Message");
 require("dotenv").config();
 
 const typeDefs = gql(
@@ -45,6 +46,7 @@ const graphQLServer = new ApolloServer({
   resolvers,
   context: ({ req, res }) => ({
     User,
+    Message,
     req,
     res,
     pubsub

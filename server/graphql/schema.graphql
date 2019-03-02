@@ -8,7 +8,6 @@ type User {
 type Message {
   _id: ID!
   text: String!
-  sender: User!
 }
 
 type SuccessMessage {

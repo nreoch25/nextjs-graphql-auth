@@ -131,6 +131,16 @@ const Mutation = {
       maxAge: 1000 * 60 * 60 * 24 // 1 day cookie
     });
     return updatedUser;
+  },
+  postMessage: async (parent, { text }, { Message, req, pubsub }) => {
+    if (!req.userId) {
+      throw new Error("You must be an authenticated user");
+    }
+    const newMessage = new Message({
+      text
+    });
+    pubsub.publish("message-added", { newMessage });
+    return await newMessage.save();
   }
 };
 
