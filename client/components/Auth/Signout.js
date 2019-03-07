@@ -1,5 +1,5 @@
 import { Mutation } from "react-apollo";
-import { gql } from "apollo-boost";
+import gql from "graphql-tag";
 import { CURRENT_USER_QUERY } from "./User";
 import { DropdownItem } from "reactstrap";
 

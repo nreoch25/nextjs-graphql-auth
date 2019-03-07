@@ -11,15 +11,22 @@
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
-    "apollo-boost": "^0.1.23",
+    "apollo-cache-inmemory": "^1.5.1",
+    "apollo-client": "^2.5.1",
+    "apollo-link": "^1.2.8",
+    "apollo-link-http": "^1.5.11",
+    "apollo-link-ws": "^1.0.14",
+    "apollo-utilities": "^1.2.1",
     "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.1",
     "next": "^7.0.2",
     "next-with-apollo": "^3.3.0",
     "nprogress": "^0.2.0",
     "react": "^16.6.3",
     "react-apollo": "^2.3.3",
     "react-dom": "^16.6.3",
-    "reactstrap": "^6.5.0"
+    "reactstrap": "^6.5.0",
+    "subscriptions-transport-ws": "^0.9.15"
   },
   "devDependencies": {
     "babel-core": "7.0.0-bridge.0",

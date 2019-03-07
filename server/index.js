@@ -32,6 +32,7 @@ mongoose
 app.use(cookieParser());
 // use cookie parser to populate current user
 app.use((req, res, next) => {
+  console.log("Cookies", req.cookies);
   const { token } = req.cookies;
   if (token) {
     const { _id } = jwt.verify(token, process.env.JWT_SECRET);

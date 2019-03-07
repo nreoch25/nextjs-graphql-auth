@@ -1,5 +1,5 @@
 const env = process.env.NODE_ENV || "development";
-export const config = {
+const config = {
   development: {
     clientEndpoint: "http://localhost/graphql",
     serverEndpoint: "http://nginx/graphql"
@@ -10,3 +10,5 @@ export const config = {
     serverEndpoint: "http://nginx/graphql"
   }
 }[env];
+
+export default config;
