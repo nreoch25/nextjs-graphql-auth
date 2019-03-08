@@ -1,11 +1,15 @@
-import { Component } from "react";
+import { Component, Fragment } from "react";
+import MessageForm from "./Messages/MessageForm";
+import { Row, Col } from "reactstrap";
 
 class Protected extends Component {
   render() {
     return (
-      <div>
-        <h1>Protected</h1>
-      </div>
+      <Row style={{ paddingTop: "30px" }}>
+        <Col>
+          <MessageForm />
+        </Col>
+      </Row>
     );
   }
 }
