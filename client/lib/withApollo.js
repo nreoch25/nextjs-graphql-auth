@@ -2,7 +2,9 @@ import withApollo from "next-with-apollo";
 import { ApolloClient } from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
-import { ApolloLink } from "apollo-link";
+import { ApolloLink, split } from "apollo-link";
+import { WebSocketLink } from "apollo-link-ws";
+import { getMainDefinition } from "apollo-utilities";
 import config from "../config";
 
 const endpoint = process.browser
@@ -20,12 +22,38 @@ function createClient({ headers }) {
     });
     return forward(operation);
   });
+
   const httpLink = createHttpLink({
     uri: endpoint
   });
+
+  const wsLink = process.browser
+    ? new WebSocketLink({
+        uri: "ws://localhost/graphql",
+        options: {
+          reconnect: true
+        }
+      })
+    : () => {
+        console.log("SSR");
+      };
+
+  const link = split(
+    ({ query }) => {
+      const { kind, operation } = getMainDefinition(query);
+      return (
+        kind === "OperationDefinition" &&
+        operation === "subscription" &&
+        process.browser
+      );
+    },
+    wsLink,
+    httpLink
+  );
+
   return new ApolloClient({
     cache,
-    link: authLink.concat(httpLink)
+    link: authLink.concat(link)
   });
 }
 
