@@ -32,7 +32,7 @@ const Mutation = {
       maxAge: 1000 * 60 * 60 * 24 // 1 day cookie
     });
 
-    return newUser;
+    return { token };
   },
   signinUser: async (root, { email, password }, { User, res }) => {
     email = email.toLowerCase();

@@ -16,6 +16,8 @@ class MessageForm extends Component {
     return (
       <Mutation mutation={POST_MESSAGE}>
         {(postMessage, { data, loading, error }) => {
+          if (loading) return <p>Loading...</p>;
+          if (error) return <p>Error: {error.message}</p>;
           const handleSubmit = evt => {
             evt.preventDefault();
             const text = evt.target.text.value;

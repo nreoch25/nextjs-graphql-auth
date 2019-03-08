@@ -14,6 +14,10 @@ type SuccessMessage {
   message: String
 }
 
+type Auth {
+  token: String!
+}
+
 type Query {
   users: [User!]!
   me: User
@@ -26,7 +30,7 @@ type Mutation {
     email: String!
     password: String!
     passwordConfirm: String!
-  ): User!
+  ): Auth!
   signinUser(email: String!, password: String!): User!
   signoutUser: SuccessMessage!
   requestReset(email: String!): SuccessMessage!
