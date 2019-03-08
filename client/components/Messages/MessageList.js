@@ -1,6 +1,9 @@
 import { Component } from "react";
 
 class MessageList extends Component {
+  componentDidMount() {
+    this.props.subscribeToNewMessages();
+  }
   render() {
     const { data } = this.props;
     return (
