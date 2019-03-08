@@ -29,10 +29,14 @@ mongoose
   .then(() => console.log(`MongoDB connected at ${process.env.MONGO_URI}`))
   .catch(error => console.error(error));
 
+const { ObjectId } = mongoose.Types;
+ObjectId.prototype.valueOf = function() {
+  return this.toString();
+};
+
 app.use(cookieParser());
 // use cookie parser to populate current user
 app.use((req, res, next) => {
-  console.log("Cookies", req.cookies);
   const { token } = req.cookies;
   if (token) {
     const { _id } = jwt.verify(token, process.env.JWT_SECRET);

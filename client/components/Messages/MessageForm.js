@@ -1,15 +1,7 @@
 import { Component } from "react";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
-import {
-  Card,
-  CardBody,
-  Button,
-  Form,
-  FormGroup,
-  Input,
-  FormText
-} from "reactstrap";
+import { Card, CardBody, Button, Form, FormGroup, Input } from "reactstrap";
 
 const POST_MESSAGE = gql`
   mutation postMessage($text: String!) {
