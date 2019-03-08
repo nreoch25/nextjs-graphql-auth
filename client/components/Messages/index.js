@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Subscription, Query } from "react-apollo";
+import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import MessageList from "./MessageList";
 

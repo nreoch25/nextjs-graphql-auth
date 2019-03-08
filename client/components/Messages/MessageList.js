@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { ListGroup, ListGroupItem } from "reactstrap";
 
 class MessageList extends Component {
   componentDidMount() {
@@ -7,11 +8,13 @@ class MessageList extends Component {
   render() {
     const { data } = this.props;
     return (
-      <ul style={{ listStyleType: "none", padding: 0 }}>
+      <ListGroup>
         {data.messages.map(message => {
-          return <li key={message._id}>{message.text}</li>;
+          return (
+            <ListGroupItem key={message._id}>{message.text}</ListGroupItem>
+          );
         })}
-      </ul>
+      </ListGroup>
     );
   }
 }
