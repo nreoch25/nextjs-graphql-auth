@@ -8,6 +8,9 @@ const Query = {
     }
     const user = User.findById(req.userId);
     return user;
+  },
+  messages: async (root, args, { Message }) => {
+    return await Message.find({});
   }
 };
 
