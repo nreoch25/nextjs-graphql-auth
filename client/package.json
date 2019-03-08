@@ -34,11 +34,13 @@
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "enzyme-to-json": "^3.3.5",
-    "jest": "^23.6.0"
+    "jest": "24.3.0"
   },
   "jest": {
     "verbose": true,
-    "setupTestFrameworkScriptFile": "<rootDir>/__tests__/setup/setupEnzyme.js",
+    "setupFilesAfterEnv": [
+      "<rootDir>/__tests__/setup/setupEnzyme.js"
+    ],
     "testPathIgnorePatterns": [
       "<rootDir>/__tests__/setup/"
     ],
