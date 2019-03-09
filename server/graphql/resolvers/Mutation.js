@@ -139,10 +139,14 @@ const Mutation = {
       throw new Error("You must be an authenticated user");
     }
     const newMessage = new Message({
-      text
+      text,
+      sender: req.userId
     });
-    pubsub.publish("message-added", { newMessage });
-    return await newMessage.save();
+    const message = await newMessage.save();
+    const populatedMessage = await message.populate("sender").execPopulate();
+    console.log(populatedMessage);
+    pubsub.publish("message-added", { newMessage: populatedMessage });
+    return populatedMessage;
   }
 };
 

@@ -8,6 +8,11 @@ const MESSAGES = gql`
     messages {
       _id
       text
+      sender {
+        _id
+        username
+        email
+      }
     }
   }
 `;
@@ -17,6 +22,11 @@ const NEW_MESSAGE = gql`
     newMessage {
       _id
       text
+      sender {
+        _id
+        username
+        email
+      }
     }
   }
 `;

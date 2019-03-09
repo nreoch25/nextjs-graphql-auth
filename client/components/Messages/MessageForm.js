@@ -6,7 +6,13 @@ import { Card, CardBody, Button, Form, FormGroup, Input } from "reactstrap";
 const POST_MESSAGE = gql`
   mutation postMessage($text: String!) {
     postMessage(text: $text) {
+      _id
       text
+      sender {
+        _id
+        username
+        email
+      }
     }
   }
 `;

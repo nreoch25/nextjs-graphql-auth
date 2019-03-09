@@ -11,7 +11,9 @@ class MessageList extends Component {
       <ListGroup>
         {data.messages.map(message => {
           return (
-            <ListGroupItem key={message._id}>{message.text}</ListGroupItem>
+            <ListGroupItem key={message._id}>
+              <strong>{message.sender.username}:</strong> {message.text}
+            </ListGroupItem>
           );
         })}
       </ListGroup>
