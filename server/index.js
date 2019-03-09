@@ -49,13 +49,22 @@ app.use((req, res, next) => {
 const graphQLServer = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({ req, res }) => ({
-    User,
-    Message,
-    req,
-    res,
-    pubsub
-  })
+  context: ({ req, res, connection }) => {
+    const subUser = connection ? connection.context.subUser : null;
+    return { User, Message, req, res, pubsub, subUser };
+  },
+  subscriptions: {
+    onConnect: async (params, socket) => {
+      const token = params.authToken;
+      if (token) {
+        const user = jwt.verify(token, process.env.JWT_SECRET);
+        if (user) {
+          return Object.assign({}, socket.upgradeReq, { subUser: user });
+        }
+      }
+      throw new Error("User is not authenticated");
+    }
+  }
 });
 
 graphQLServer.applyMiddleware({

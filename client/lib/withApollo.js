@@ -31,7 +31,14 @@ function createClient({ headers }) {
     ? new WebSocketLink({
         uri: "ws://localhost/graphql",
         options: {
-          reconnect: true
+          reconnect: true,
+          connectionParams: () => {
+            const token = localStorage.getItem("token");
+            if (token) {
+              return { authToken: token };
+            }
+            return {};
+          }
         }
       })
     : () => {

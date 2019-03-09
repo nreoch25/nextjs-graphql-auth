@@ -1,7 +1,10 @@
 const Subscription = {
   newMessage: {
-    subscribe: (parent, args, { pubsub, req }) => {
-      return pubsub.asyncIterator("message-added");
+    subscribe: (parent, args, { pubsub, subUser }) => {
+      if (subUser) {
+        return pubsub.asyncIterator("message-added");
+      }
+      throw new Error("User is not authenticated");
     }
   }
 };
