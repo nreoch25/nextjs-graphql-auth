@@ -1,7 +1,8 @@
 const Subscription = {
   newMessage: {
-    subscribe: (parent, args, { pubsub }) =>
-      pubsub.asyncIterator("message-added")
+    subscribe: (parent, args, { pubsub, req }) => {
+      return pubsub.asyncIterator("message-added");
+    }
   }
 };
 

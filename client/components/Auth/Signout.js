@@ -13,6 +13,9 @@ const SIGN_OUT_MUTATION = gql`
 
 const Signout = props => (
   <Mutation
+    update={() => {
+      localStorage.removeItem("token");
+    }}
     mutation={SIGN_OUT_MUTATION}
     refetchQueries={[{ query: CURRENT_USER_QUERY }]}
   >

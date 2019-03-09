@@ -5,7 +5,6 @@ services:
     ports:
       - "27017:27017"
   nginx:
-    restart: always
     build:
       dockerfile: Dockerfile.dev
       context: ./nginx

@@ -19,8 +19,7 @@ import { CURRENT_USER_QUERY } from "../Auth/User";
 const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
     signinUser(email: $email, password: $password) {
-      username
-      email
+      token
     }
   }
 `;
@@ -37,6 +36,11 @@ class Signin extends Component {
   render() {
     return (
       <Mutation
+        update={(store, { data: { signinUser } }) => {
+          if (signinUser.token) {
+            localStorage.setItem("token", signinUser.token);
+          }
+        }}
         mutation={SIGNIN_MUTATION}
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}

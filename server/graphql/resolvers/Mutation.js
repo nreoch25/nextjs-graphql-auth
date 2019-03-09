@@ -51,7 +51,9 @@ const Mutation = {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 // 1 day cookie
     });
-    return user;
+    return {
+      token
+    };
   },
   signoutUser: async (root, args, { res }) => {
     res.clearCookie("token");
