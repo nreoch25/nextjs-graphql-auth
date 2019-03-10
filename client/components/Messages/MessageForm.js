@@ -12,6 +12,7 @@ const POST_MESSAGE = gql`
         _id
         username
         email
+        password
       }
     }
   }
@@ -24,6 +25,7 @@ class MessageForm extends Component {
         {(postMessage, { data, loading, error }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error: {error.message}</p>;
+          console.log("data", data);
           const handleSubmit = evt => {
             evt.preventDefault();
             const text = evt.target.text.value;
