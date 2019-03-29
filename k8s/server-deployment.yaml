@@ -14,6 +14,11 @@ spec:
     spec:
       containers:
         - name: server
-          image: nreoch9/nextjs-graphql-auth-server
+          image: nreoch9/nextjs-graphql-auth-server:v1
           ports:
             - containerPort: 8000
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://db:27017/graphql-auth'
+            - name: JWT_SECRET
+              value: 'thisisthenextjsgraphqlauthsecret'
