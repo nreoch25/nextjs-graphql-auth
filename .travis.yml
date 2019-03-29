@@ -10,15 +10,15 @@ script:
 
 after_success:
   # Build images
-  - docker build -t nreoch9/nextjs-graphql-auth-client ./client
-  - docker build -t nreoch9/nextjs-graphql-auth-nginx ./nginx
-  - docker build -t nreoch9/nextjs-graphql-auth-server ./server
+  - docker build -t nreoch9/nextjs-graphql-auth-client:v1 ./client
+  - docker build -t nreoch9/nextjs-graphql-auth-nginx:v1 ./nginx
+  - docker build -t nreoch9/nextjs-graphql-auth-server:v1 ./server
   # Login to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push images to docker hub
-  - docker push nreoch9/nextjs-graphql-auth-client
-  - docker push nreoch9/nextjs-graphql-auth-nginx
-  - docker push nreoch9/nextjs-graphql-auth-server
+  - docker push nreoch9/nextjs-graphql-auth-client:v1
+  - docker push nreoch9/nextjs-graphql-auth-nginx:v1
+  - docker push nreoch9/nextjs-graphql-auth-server:v1
 # deploy:
 #   provider: elasticbeanstalk
 #   region: us-east-2

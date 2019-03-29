@@ -40,13 +40,11 @@ class Messages extends Component {
         {({ subscribeToMore, data, loading, error }) => {
           if (loading) return <p>Loading...</p>;
           if (error) return <p>Error: {error.message}</p>;
-          console.log("data", data);
           const subscribeToNewMessages = () =>
             subscribeToMore({
               document: NEW_MESSAGE,
               updateQuery: (prev, { subscriptionData }) => {
                 if (!subscriptionData) return;
-                console.log("subscriptionData", subscriptionData);
                 const newMessage = subscriptionData.data.newMessage;
                 return Object.assign({}, prev, {
                   messages: [newMessage, ...prev.messages]

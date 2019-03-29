@@ -5,9 +5,8 @@ const config = {
     serverEndpoint: "http://nginx/graphql"
   },
   production: {
-    clientEndpoint:
-      "http://nextjsgraphqlauth-env.hgdpaicmfm.us-east-2.elasticbeanstalk.com/graphql",
-    serverEndpoint: "http://nginx/graphql"
+    clientEndpoint: "http://192.168.55.136/graphql",
+    serverEndpoint: "http://192.168.55.136/graphql"
   }
 }[env];
 
