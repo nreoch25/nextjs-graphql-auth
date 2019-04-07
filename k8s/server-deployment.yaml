@@ -22,3 +22,21 @@ spec:
               value: "mongodb://database:27017/nextjs-graphql-auth"
             - name: JWT_SECRET
               value: "thisisthenextjsgraphqlauthsecret"
+            - name: CLIENT_URI
+              value: "http://192.168.55.141"
+            - name: PORT
+              value: "8000"
+            - name: MAIL_HOST
+              value: "smtp.mailtrap.io"
+            - name: MAIL_PORT
+              value: "2525"
+            - name: MAIL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mailuser
+                  key: MAIL_USER
+            - name: MAIL_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: mailpass
+                  key: MAIL_PASS

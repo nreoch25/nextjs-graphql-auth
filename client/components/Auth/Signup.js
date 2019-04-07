@@ -60,7 +60,6 @@ class Signup extends Component {
       >
         {(signupUser, { data, error, loading }) => {
           if (loading) return <p>Loading...</p>;
-          if (error) return <p>Error: {error.message}</p>;
           return (
             <Row style={{ paddingTop: "100px" }}>
               <Col
