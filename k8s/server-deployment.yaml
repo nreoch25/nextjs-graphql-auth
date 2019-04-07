@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: nreoch9/nextjs-graphql-auth-server:v1
+          image: nreoch9/nextjs-graphql-auth-server:latest
           ports:
             - containerPort: 8000
           env:

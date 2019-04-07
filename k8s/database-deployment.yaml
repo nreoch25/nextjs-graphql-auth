@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: database
-          image: mongo:latest
+          image: mongo:3.6.5-jessie

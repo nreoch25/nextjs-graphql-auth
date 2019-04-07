@@ -5,8 +5,8 @@ const config = {
     serverEndpoint: "http://nginx/graphql"
   },
   production: {
-    clientEndpoint: "http://192.168.55.136/graphql",
-    serverEndpoint: "http://192.168.55.136/graphql"
+    clientEndpoint: "http://192.168.55.141/graphql",
+    serverEndpoint: "http://192.168.55.141/graphql"
   }
 }[env];
 

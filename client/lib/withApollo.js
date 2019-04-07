@@ -29,7 +29,7 @@ function createClient({ headers }) {
 
   const wsLink = process.browser
     ? new WebSocketLink({
-        uri: "ws://localhost/graphql",
+        uri: "ws://192.168.55.141/graphql",
         options: {
           reconnect: true,
           connectionParams: () => {
