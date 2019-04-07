@@ -21,4 +21,4 @@ To run in development mode
 $ docker-compose up
 ```
 
-**NOTE: There is a production deployment pipeline setup with TravisCI, DockerHub, and AWS Elastic Beanstalk. I can supply full instructions if needed to get you setup for the production deployment pipeline**
+**NOTE: There is a production deployment pipeline setup with TravisCI, DockerHub, and Kubernetes that runs in a Minikube cluster. I can supply full instructions if needed to get you setup for the production deployment pipeline**
