@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: database
+spec:
+  selector:
+    app: database
+  ports:
+    - name: mongoport
+      port: 27017
+  type: ClusterIP

@@ -70,14 +70,14 @@ const graphQLServer = new ApolloServer({
 graphQLServer.applyMiddleware({
   app,
   path: "/graphql",
-  cors: { origin: "http://localhost", credentials: true }
+  cors: { origin: "http://192.168.55.141", credentials: true }
 });
 
 app.get(
   "/playground",
   expressPlayground({
     endpoint: "/graphql",
-    subscriptionEndpoint: `ws://localhost${graphQLServer.graphqlPath}`
+    subscriptionEndpoint: `ws://192.168.55.141${graphQLServer.graphqlPath}`
   })
 );
 
@@ -86,7 +86,7 @@ graphQLServer.installSubscriptionHandlers(httpServer);
 
 httpServer.listen({ port }, () => {
   console.log(
-    `GraphQL Server running @ http://localhost:${port}${
+    `GraphQL Server running @ http://192.168.55.141:${port}${
       graphQLServer.graphqlPath
     }`
   );

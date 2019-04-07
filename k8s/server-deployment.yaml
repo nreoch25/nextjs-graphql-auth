@@ -19,6 +19,6 @@ spec:
             - containerPort: 8000
           env:
             - name: MONGO_URI
-              value: 'mongodb://db:27017/graphql-auth'
+              value: "mongodb://database:27017/nextjs-graphql-auth"
             - name: JWT_SECRET
-              value: 'thisisthenextjsgraphqlauthsecret'
+              value: "thisisthenextjsgraphqlauthsecret"
