@@ -87,7 +87,7 @@ const Mutation = {
       subject: "Your Password Reset Token",
       html: passwordResetEmail(`Your Password Reset Token is here!
       \n\n
-      <a href="${
+      <a href="http://${
         process.env.CLIENT_URI
       }/reset?resetToken=${resetToken}">Click Here to Reset</a>`)
     });

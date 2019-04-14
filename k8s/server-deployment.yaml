@@ -23,7 +23,7 @@ spec:
             - name: JWT_SECRET
               value: "thisisthenextjsgraphqlauthsecret"
             - name: CLIENT_URI
-              value: "http://192.168.55.141"
+              value: "192.168.55.141"
             - name: PORT
               value: "8000"
             - name: MAIL_HOST
