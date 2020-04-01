@@ -2,6 +2,8 @@
 
 ### Authentication system boilerplate application using NextJS, GraphQL, MongoDB, and Nginx
 
+## There is a new version using Apollo Hooks on the client instead of Render props. [check it out]
+
 _You will need a .env file in the server directory with the following environment variables_
 
 ```
@@ -22,3 +24,5 @@ $ docker-compose up
 ```
 
 **NOTE: There is a production deployment pipeline setup with TravisCI, DockerHub, and Kubernetes that runs in a Minikube cluster. I can supply full instructions if needed to get you setup for the production deployment pipeline**
+
+[check it out]: https://github.com/nreoch25/nextjs-graphql-hooks-auth
